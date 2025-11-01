@@ -17,8 +17,10 @@ import Clockwork from "../assets/images/clockwork.png";
 import Dragon from "../assets/images/dragon.png";
 import Footer from "../components/Footer";
 import PopularComics from "../components/PopularComics";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  const navigate = useNavigate();
   const comics = [
     {
       title: "Starbound Saga: Echoes of Andromed",
@@ -106,8 +108,8 @@ const Landing = () => {
   ];
   return (
     <div className="font-inter max-w-[1120px] mx-auto px-8 mt-12">
-      <div className="bg-hero w-full p-12 h-[600px] rounded-2xl shadow-md flex items-center gap-12">
-        <div className="flex-1">
+      <div className="bg-hero w-full p-12 min-h-[600px] rounded-2xl shadow-md flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1 order-2 md:order-1">
           <h1 className="text-5xl leading-tight text-hero-text font-bold mb-4">
             Embark on an Epic Adventure: 'Chronicles of Eldoria'
           </h1>
@@ -117,15 +119,26 @@ const Landing = () => {
             foes to save her kingdom from impending doom. A tale of courage,
             friendship, and destiny awaits!
           </p>
-          <button className="bg-nav hover:bg-blue-700 text-white px-3 rounded-full text-sm font-medium h-[44px] w-[132px] flex items-center justify-center cursor-pointer">
+          <button
+            onClick={() =>
+              navigate(
+                `/reader?cbzPath=${encodeURIComponent(
+                  "/comic/Unbreakable X-Men 001 (2025) (Digital) (Kileko-Empire).cbz"
+                )}&title=${encodeURIComponent(
+                  "Embark on an Epic Adventure: 'Chronicles of Eldoria'"
+                )}`
+              )
+            }
+            className="bg-nav hover:bg-blue-700 text-white px-3 rounded-full text-sm font-medium h-11 w-[132px] flex items-center justify-center cursor-pointer"
+          >
             Read Now
           </button>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 order-1 md:order-2">
           <img
             src={FireGirl}
             alt="hero-banner"
-            className="w-full rounded-2xl"
+            className="w-full h-auto object-cover rounded-2xl"
           />
         </div>
       </div>

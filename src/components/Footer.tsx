@@ -6,13 +6,13 @@ import ig from "../assets/images/ig.svg";
 const Footer = () => {
   const footStyle = "text-footer text-sm font-nomal";
   return (
-    <div className="mt-40 flex items-center justify-between">
+    <div className="mt-40 flex flex-col md:flex-row items-center justify-between">
       <div className="flex flex-col gap-3 items-start">
         <img src={Logo} alt="logo" className="w-8 h-8" />
         <p className="text-base text-neutral font-normal">
           Your space to read and share digital comics.
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center justify-center w-full md:justify-start gap-5">
           <img src={facebook} alt="facebook" />
           <img src={twitter} alt="twitter" />
           <img src={ig} alt="instagram" />
@@ -21,7 +21,7 @@ const Footer = () => {
           © 2025 ComicShare. All rights reserved
         </p>
       </div>
-      <div className="flex justify-between w-[500px]">
+      <div className="flex flex-col md:flex-row justify-between w-[500px]">
         <div className="flex flex-col gap-2">
           <h6 className="text-base text-neutral font-semibold">Discover</h6>
           <p className={footStyle}>Home</p>

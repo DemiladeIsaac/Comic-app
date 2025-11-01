@@ -23,7 +23,6 @@ const Reader: React.FC = () => {
   const comicTitle = searchParams.get("title");
 
   useEffect(() => {
-    console.log(cbzPath);
     if (!cbzPath) {
       alert("No comic path provided.");
       navigate("/");
@@ -53,6 +52,7 @@ const Reader: React.FC = () => {
         }
 
         await view.open(book);
+
         viewRef.current = view;
         setIsReady(true);
       } catch (error) {
