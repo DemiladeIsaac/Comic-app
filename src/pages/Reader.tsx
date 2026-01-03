@@ -35,10 +35,21 @@ const Reader: React.FC = () => {
         console.log("Status:", response.status);
         console.log("Content-Type:", response.headers.get("content-type"));
         if (!response.ok) throw new Error("Failed to fetch comic file");
-        const blob = await response.blob();
+        // const blob = await response.blob();
 
-        // foliate-js needs the name property to determine file type
-        const file = new File([blob], "comic.cbz", { type: "application/zip" });
+        // // foliate-js needs the name property to determine file type
+        // const file = new File([blob], "comic.cbz", { type: "application/zip" });
+
+        // Use arrayBuffer instead of blob
+        const buffer = await response.arrayBuffer();
+
+        // Preserve the real filename
+        const filename = cbzPath.split("/").pop() || "comic.cbz";
+
+        // Force ZIP MIME type
+        const file = new File([buffer], filename, {
+          type: "application/zip",
+        });
 
         const book = await makeBook(file, { format: "cbz" });
         const view = new View();
