@@ -32,6 +32,8 @@ const Reader: React.FC = () => {
     const loadComic = async () => {
       try {
         const response = await fetch(cbzPath);
+        console.log("Status:", response.status);
+        console.log("Content-Type:", response.headers.get("content-type"));
         if (!response.ok) throw new Error("Failed to fetch comic file");
         const blob = await response.blob();
 
