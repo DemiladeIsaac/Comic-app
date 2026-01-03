@@ -1,0 +1,4 @@
+[[headers]]
+  for = "*.cbz"
+  [headers.values]
+    Content-Type = "application/zip"
