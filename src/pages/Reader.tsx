@@ -44,7 +44,7 @@ const Reader: React.FC = () => {
         const buffer = await response.arrayBuffer();
 
         // Preserve the real filename
-        const filename = cbzPath.split("/").pop() || "comic.cbz";
+        const filename = cbzPath!.split("/").pop() || "comic.cbz";
 
         // Force ZIP MIME type
         const file = new File([buffer], filename, {
